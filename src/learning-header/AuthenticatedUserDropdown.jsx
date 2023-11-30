@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Dropdown } from '@edx/paragon';
+import { Dropdown, Image } from '@edx/paragon';
 import {
   ProfileIcon, LogoutIcon, AccountIcon, DashboardIcon,
 } from '../Icons';
 
 import messages from './messages';
 
-const AuthenticatedUserDropdown = ({ intl, username }) => {
+const AuthenticatedUserDropdown = ({ intl, username, userProfileImage }) => {
   const dashboardMenuItem = (
     <Dropdown.Item href={`${getConfig().LMS_BASE_URL}/dashboard`}>
       <span className="drop-icon"><DashboardIcon className="text-primary" /></span>
@@ -25,7 +25,14 @@ const AuthenticatedUserDropdown = ({ intl, username }) => {
       {/* <a className="text-gray-700" href={}>{intl.formatMessage(messages.help)}</a> */}
       <Dropdown className="user-dropdown ml-3">
         <Dropdown.Toggle variant="none" className="user-dropdown-toggle">
-          <FontAwesomeIcon icon={faUserCircle} className="d-md-none" size="lg" />
+          <FontAwesomeIcon icon={faUserCircle} className="d-none" size="lg" />
+          {
+            userProfileImage && (
+              <div className="user-profile mr-3">
+                <Image src={userProfileImage} fluid alt={username} />
+              </div>
+            )
+          }
           <span data-hj-suppress className="d-none d-md-inline">
             {username}
           </span>
@@ -57,7 +64,12 @@ const AuthenticatedUserDropdown = ({ intl, username }) => {
 
 AuthenticatedUserDropdown.propTypes = {
   intl: intlShape.isRequired,
+  userProfileImage: PropTypes.string,
   username: PropTypes.string.isRequired,
+};
+
+AuthenticatedUserDropdown.defaultProps = {
+  userProfileImage: null,
 };
 
 export default injectIntl(AuthenticatedUserDropdown);

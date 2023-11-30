@@ -26,7 +26,7 @@ LinkedLogo.propTypes = {
 };
 
 const LearningHeader = ({
-  courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
+  courseOrg, courseNumber, courseTitle, intl, showUserDropdown, userProfileImage,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
 
@@ -50,6 +50,7 @@ const LearningHeader = ({
         </div>
         {showUserDropdown && authenticatedUser && (
         <AuthenticatedUserDropdown
+          userProfileImage={userProfileImage}
           username={authenticatedUser.username}
         />
         )}
@@ -65,6 +66,7 @@ LearningHeader.propTypes = {
   courseOrg: PropTypes.string,
   courseNumber: PropTypes.string,
   courseTitle: PropTypes.string,
+  userProfileImage: PropTypes.string,
   intl: intlShape.isRequired,
   showUserDropdown: PropTypes.bool,
 };
@@ -73,6 +75,7 @@ LearningHeader.defaultProps = {
   courseOrg: null,
   courseNumber: null,
   courseTitle: null,
+  userProfileImage: null,
   showUserDropdown: true,
 };
 
