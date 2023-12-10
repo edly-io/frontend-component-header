@@ -24,7 +24,7 @@ const AuthenticatedUserDropdown = ({ intl, username, userProfileImage }) => {
     <>
       {/* <a className="text-gray-700" href={}>{intl.formatMessage(messages.help)}</a> */}
       <Dropdown className="user-dropdown ml-3">
-        <Dropdown.Toggle variant="none" className="user-dropdown-toggle">
+        <Dropdown.Toggle variant="none" className="user-dropdown-toggle" id="userProfileDropDown">
           <FontAwesomeIcon icon={faUserCircle} className="d-none" size="lg" />
           {
             userProfileImage && (
