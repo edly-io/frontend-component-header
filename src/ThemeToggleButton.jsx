@@ -1,3 +1,4 @@
+import React from 'react';
 import { getConfig } from '@edx/frontend-platform';
 import Cookies from 'universal-cookie';
 
