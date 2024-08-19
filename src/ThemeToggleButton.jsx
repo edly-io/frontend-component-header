@@ -3,6 +3,8 @@ import { getConfig } from '@edx/frontend-platform';
 import Cookies from 'universal-cookie';
 
 const ThemeToggleButton = () => {
+  const themeCookieName = getConfig().THEME_COOKIE_NAME ? getConfig().THEME_COOKIE_NAME : null;
+
   const getNextWeek = () => {
     const today = new Date();
     return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
@@ -11,7 +13,6 @@ const ThemeToggleButton = () => {
   const onToggleTheme = () => {
     const cookies = new Cookies();
     const serverURL = new URL(getConfig().LMS_BASE_URL);
-    const themeCookieName = getConfig().THEME_COOKIE_NAME;
 
     const options = { domain: serverURL.hostname, path: '/', expires: getNextWeek() };
     let themeName = '';
@@ -25,6 +26,10 @@ const ThemeToggleButton = () => {
     }
     cookies.set(themeCookieName, themeName, options);
   };
+
+  if (!themeCookieName) {
+    return <div />;
+  }
 
   return (
     <div className="theme-toggle-button">

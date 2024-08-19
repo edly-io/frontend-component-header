@@ -157,7 +157,7 @@ class DesktopHeader extends React.Component {
               aria-label={intl.formatMessage(messages['header.label.secondary.nav'])}
               className="nav secondary-menu-container align-items-center ml-auto"
             >
-              <ThemeToggleButton />
+              <div className="mr-3"><ThemeToggleButton /></div>
               {loggedIn
                 ? (
                   <>
