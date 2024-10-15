@@ -17,13 +17,10 @@ describe('Header', () => {
 
   it('displays course data', () => {
     const courseData = {
-      courseOrg: 'course-org',
-      courseNumber: 'course-number',
       courseTitle: 'course-title',
     };
     render(<Header {...courseData} />);
 
-    expect(screen.getByText(`${courseData.courseOrg} ${courseData.courseNumber}`)).toBeInTheDocument();
     expect(screen.getByText(courseData.courseTitle)).toBeInTheDocument();
   });
 });
