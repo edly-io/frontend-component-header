@@ -26,7 +26,7 @@ LinkedLogo.propTypes = {
 };
 
 const LearningHeader = ({
-  courseOrg, courseNumber, courseTitle, intl, showUserDropdown, userProfileImage,
+  courseTitle, intl, showUserDropdown, userProfileImage,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
 
@@ -45,7 +45,6 @@ const LearningHeader = ({
       <div className="container-xl d-flex align-items-center">
         {headerLogo}
         <div className="flex-grow-1 course-title-lockup" style={{ lineHeight: 1 }}>
-          <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
           <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
         </div>
         {showUserDropdown && authenticatedUser && (
@@ -63,8 +62,6 @@ const LearningHeader = ({
 };
 
 LearningHeader.propTypes = {
-  courseOrg: PropTypes.string,
-  courseNumber: PropTypes.string,
   courseTitle: PropTypes.string,
   userProfileImage: PropTypes.string,
   intl: intlShape.isRequired,
@@ -72,8 +69,6 @@ LearningHeader.propTypes = {
 };
 
 LearningHeader.defaultProps = {
-  courseOrg: null,
-  courseNumber: null,
   courseTitle: null,
   userProfileImage: null,
   showUserDropdown: true,
