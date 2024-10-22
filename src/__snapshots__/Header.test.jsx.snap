@@ -134,7 +134,7 @@ exports[`<Header /> renders correctly for anonymous mobile 1`] = `
     </div>
   </div>
   <div
-    className="logo-holder justify-content-center"
+    className="w-100 d-flex justify-content-center"
   >
     <a
       className="logo"
@@ -373,7 +373,7 @@ exports[`<Header /> renders correctly for authenticated mobile 1`] = `
     </div>
   </div>
   <div
-    className="logo-holder justify-content-center"
+    className="w-100 d-flex justify-content-center"
   >
     <a
       className="logo"

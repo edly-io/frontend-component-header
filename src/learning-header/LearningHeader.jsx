@@ -7,24 +7,8 @@ import { AppContext } from '@edx/frontend-platform/react';
 import AnonymousUserMenu from './AnonymousUserMenu';
 import AuthenticatedUserDropdown from './AuthenticatedUserDropdown';
 import ThemeToggleButton from '../ThemeToggleButton';
+import LogoSlot from '../plugin-slots/LogoSlot';
 import messages from './messages';
-
-const LinkedLogo = ({
-  href,
-  src,
-  alt,
-  ...attributes
-}) => (
-  <a href={href} {...attributes}>
-    <img className="d-block" src={src} alt={alt} />
-  </a>
-);
-
-LinkedLogo.propTypes = {
-  href: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-};
 
 const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
@@ -32,8 +16,7 @@ const LearningHeader = ({
   const { authenticatedUser } = useContext(AppContext);
 
   const headerLogo = (
-    <LinkedLogo
-      className="logo"
+    <LogoSlot
       href={`${getConfig().LMS_BASE_URL}/dashboard`}
       src={getConfig().LOGO_URL}
       alt={getConfig().SITE_NAME}
