@@ -2,8 +2,7 @@ name: Release CI
 on:
   push:
     branches:
-    - master
-    - alpha
+    - redwood/indigo
 jobs:
   release:
     name: Release

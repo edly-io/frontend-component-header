@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Dropdown } from '@openedx/paragon';
-
 import LearningUserMenuSlot from '../plugin-slots/LearningUserMenuSlot';
 
 import messages from './messages';
 
 const AuthenticatedUserDropdown = ({ intl, username }) => {
   const dropdownItems = [
+    {
+      message: intl.formatMessage(messages.mycourses),
+      href: `${getConfig().LMS_BASE_URL}/dashboard`,
+    },
+    {
+      message: intl.formatMessage(messages.discover),
+      href: `${getConfig().LMS_BASE_URL}/courses`,
+    },
     {
       message: intl.formatMessage(messages.dashboard),
       href: `${getConfig().LMS_BASE_URL}/dashboard`,
@@ -37,8 +42,13 @@ const AuthenticatedUserDropdown = ({ intl, username }) => {
 
   return (
     <Dropdown className="user-dropdown ml-3">
-      <Dropdown.Toggle variant="outline-primary" aria-label={intl.formatMessage(messages.userOptionsDropdownLabel)}>
-        <FontAwesomeIcon icon={faUserCircle} className="d-md-none" size="lg" />
+      <Dropdown.Toggle variant="outline-primary">
+        <div className="hamburger-menu">
+          <span className="line" />
+          <span className="line" />
+          <span className="line" />
+          <span className="line" />
+        </div>
         <span data-hj-suppress className="d-none d-md-inline">
           {username}
         </span>

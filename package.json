@@ -1,6 +1,6 @@
 {
-  "name": "@edx/frontend-component-header",
-  "version": "1.0.0-semantically-released",
+  "name": "@edly-io/indigo-frontend-component-header",
+  "version": "2.0.0",
   "description": "The standard header for Open edX",
   "main": "dist/index.js",
   "publishConfig": {
@@ -20,14 +20,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openedx/frontend-component-header.git"
+    "url": "git+https://github.com/edly-io/frontend-component-header.git"
   },
   "author": "edX",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/openedx/frontend-component-header/issues"
+    "url": "https://github.com/edly-io/frontend-component-header/issues"
   },
-  "homepage": "https://github.com/openedx/frontend-component-header#readme",
+  "homepage": "https://github.com/edly-io/frontend-component-header#readme",
   "devDependencies": {
     "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
     "@edx/browserslist-config": "^1.1.1",
@@ -61,7 +61,8 @@
     "classnames": "^2.5.1",
     "jest-environment-jsdom": "^29.7.0",
     "react-responsive": "8.2.0",
-    "react-transition-group": "4.4.5"
+    "react-transition-group": "4.4.5",
+    "universal-cookie": "^7.2.0"
   },
   "peerDependencies": {
     "@edx/frontend-platform": "^7.0.0 || ^8.0.0",
@@ -70,5 +71,11 @@
     "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0",
     "react-router-dom": "^6.14.2"
+  },
+  "release": {
+    "tagFormat": "indigo-${version}",
+    "branches": [
+      "redwood/indigo"
+    ]
   }
 }
