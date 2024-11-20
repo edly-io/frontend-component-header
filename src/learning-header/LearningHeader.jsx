@@ -35,12 +35,12 @@ const LearningHeader = ({
           <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
           <div className="nav-course">
             <a href={`${getConfig().LMS_BASE_URL}/dashboard`}>
-              My Courses
+              {intl.formatMessage(messages.mycourses)}
             </a>
           </div>
           <div className="nav-course">
             <a href={`${getConfig().LMS_BASE_URL}/courses`}>
-              Discover
+              {intl.formatMessage(messages.discover)}
             </a>
           </div>
         </div>
