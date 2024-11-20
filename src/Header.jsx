@@ -122,10 +122,10 @@ const Header = ({
 
   return (
     <>
-      <Responsive maxWidth={769}>
+      <Responsive maxWidth={991}>
         <MobileHeaderSlot props={props} />
       </Responsive>
-      <Responsive minWidth={769}>
+      <Responsive minWidth={992}>
         <DesktopHeaderSlot props={props} />
       </Responsive>
     </>

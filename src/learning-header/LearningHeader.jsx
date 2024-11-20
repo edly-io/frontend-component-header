@@ -11,6 +11,7 @@ import CourseInfoSlot from '../plugin-slots/CourseInfoSlot';
 import { courseInfoDataShape } from './LearningHeaderCourseInfo';
 import messages from './messages';
 import LearningHelpSlot from '../plugin-slots/LearningHelpSlot';
+import ThemeToggleButton from '../ThemeToggleButton';
 
 const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
@@ -26,13 +27,24 @@ const LearningHeader = ({
   );
 
   return (
-    <header className="learning-header">
+    <header className="learning-header customise indigo-header-version">
       <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
       <div className="container-xl py-2 d-flex align-items-center">
         {headerLogo}
         <div className="flex-grow-1 course-title-lockup d-flex" style={{ lineHeight: 1 }}>
           <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
+          <div className="nav-course">
+            <a href={`${getConfig().LMS_BASE_URL}/dashboard`}>
+              My Courses
+            </a>
+          </div>
+          <div className="nav-course">
+            <a href={`${getConfig().LMS_BASE_URL}/courses`}>
+              Discover
+            </a>
+          </div>
         </div>
+        <ThemeToggleButton />
         {showUserDropdown && authenticatedUser && (
         <>
           <LearningHelpSlot />

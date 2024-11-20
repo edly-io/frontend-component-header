@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { getConfig } from '@edx/frontend-platform';
+import ThemeToggleButton from '../ThemeToggleButton';
 
 // Local Components
 import { Menu, MenuTrigger, MenuContent } from '../Menu';
@@ -93,6 +94,7 @@ class DesktopHeader extends React.Component {
               aria-label={intl.formatMessage(messages['header.label.secondary.nav'])}
               className="nav secondary-menu-container align-items-center ml-auto"
             >
+              <div className="mr-3"><ThemeToggleButton /></div>
               {loggedIn
                 ? (
                   <>
