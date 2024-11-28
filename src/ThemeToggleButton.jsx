@@ -18,20 +18,19 @@ const ThemeToggleButton = () => {
 
   const getCookieOptions = (serverURL) => ({ domain: serverURL.hostname, path: '/', expires: getCookieExpiry() });
 
-  const addDarkThemeToIframes =  () => {
+  const addDarkThemeToIframes = () => {
     const iframes = document.getElementsByTagName('iframe');
     const iframesLength = iframes.length;
-    if (iframesLength > 0){
-        Array.from({length:  iframesLength}).forEach((_, ind)=>{
-            let style = document.createElement('style');
-            style.textContent =
-                'body {' +
-                '  background-color: #0D0D0E;' +
-                '  color: #ccc;' +
-                '}' 
-            ;
-            if (iframes[ind].contentDocument) {iframes[ind].contentDocument.head.appendChild(style);}
-        });
+    if (iframesLength > 0) {
+      Array.from({ length: iframesLength }).forEach((_, ind) => {
+        const style = document.createElement('style');
+        style.textContent = `
+          body{
+            background-color: #0D0D0E;
+            color: #ccc;
+        }`;
+        if (iframes[ind].contentDocument) { iframes[ind].contentDocument.head.appendChild(style); }
+      });
     }
   };
 
@@ -40,17 +39,15 @@ const ThemeToggleButton = () => {
     const iframesLength = iframes.length;
 
     Array.from({ length: iframesLength }).forEach((_, ind) => {
-        if (iframes[ind].contentDocument) {
-            const iframeHead = iframes[ind].contentDocument.head;
-            const styleTag = Array.from(iframeHead.querySelectorAll('style')).find(
-                (style) =>
-                    style.textContent.includes('background-color: #0D0D0E;') &&
-                    style.textContent.includes('color: #ccc;')
-            );
-            if (styleTag) {
-                styleTag.remove();
-            }
+      if (iframes[ind].contentDocument) {
+        const iframeHead = iframes[ind].contentDocument.head;
+        const styleTag = Array.from(iframeHead.querySelectorAll('style')).find(
+          (style) => style.textContent.includes('background-color: #0D0D0E;') && style.textContent.includes('color: #ccc;'),
+        );
+        if (styleTag) {
+          styleTag.remove();
         }
+      }
     });
   };
 
