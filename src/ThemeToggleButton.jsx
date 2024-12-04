@@ -28,7 +28,10 @@ const ThemeToggleButton = () => {
           body{
             background-color: #0D0D0E;
             color: #ccc;
-        }`;
+          }
+          a {color: #ccc;}
+          a:hover{color: #d3d3d3;}
+          `;
         if (iframes[ind].contentDocument) { iframes[ind].contentDocument.head.appendChild(style); }
       });
     }
