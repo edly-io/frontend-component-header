@@ -75,6 +75,12 @@ const ThemeToggleButton = () => {
     }
   };
 
+  const hanldeKeyUp = (event) => {
+    if (event.key === 'Enter') {
+      onToggleTheme();
+    }
+  }
+
   if (!isThemeToggleEnabled) {
     return <div />;
   }
@@ -84,7 +90,7 @@ const ThemeToggleButton = () => {
       <div className="light-theme-icon"><Icon src={WbSunny} /></div>
       <div className="toggle-switch">
         <label htmlFor="theme-toggle-checkbox" className="switch">
-          <input id="theme-toggle-checkbox" defaultChecked={cookies.get(themeCookie) === 'dark'} onChange={onToggleTheme} type="checkbox" />
+          <input id="theme-toggle-checkbox" defaultChecked={cookies.get(themeCookie) === 'dark'} onChange={onToggleTheme} onKeyUp={hanldeKeyUp} type="checkbox" />
           <span className="slider round" />
         </label>
       </div>
