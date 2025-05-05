@@ -79,7 +79,7 @@ const ThemeToggleButton = () => {
     if (event.key === 'Enter') {
       onToggleTheme();
     }
-  }
+  };
 
   if (!isThemeToggleEnabled) {
     return <div />;
