@@ -41,10 +41,10 @@ const messages = defineMessages({
     defaultMessage: 'Skip to main content.',
     description: 'A link used by screen readers to allow users to skip to the main content of the page.',
   },
-  signOut: {
-    id: 'header.menu.signOut.label',
-    defaultMessage: 'Sign Out',
-    description: 'The label for the user menu Sign Out action.',
+  logout: {
+    id: 'header.menu.logout.label',
+    defaultMessage: 'Logout',
+    description: 'The label for the user menu Logout action.',
   },
 });
 
