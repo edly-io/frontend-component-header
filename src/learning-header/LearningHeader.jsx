@@ -17,6 +17,7 @@ const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   const headerLogo = (
     <LogoSlot
@@ -30,6 +31,11 @@ const LearningHeader = ({
     <header className="learning-header customise indigo-header-version">
       <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
       <div className="container-xl py-2 d-flex align-items-center">
+        {showUserDropdown && authenticatedUser && isMobile && (
+          <AuthenticatedUserDropdown
+            username={authenticatedUser.username}
+          />
+        )}
         {headerLogo}
         <div className="flex-grow-1 course-title-lockup d-flex" style={{ lineHeight: 1 }}>
           <CourseInfoSlot courseOrg={courseOrg} courseNumber={courseNumber} courseTitle={courseTitle} />
@@ -48,9 +54,13 @@ const LearningHeader = ({
         {showUserDropdown && authenticatedUser && (
         <>
           <LearningHelpSlot />
-          <AuthenticatedUserDropdown
-            username={authenticatedUser.username}
-          />
+          {
+            !isMobile && (
+              <AuthenticatedUserDropdown
+                username={authenticatedUser.username}
+              />
+            )
+          }
         </>
         )}
         {showUserDropdown && !authenticatedUser && (
