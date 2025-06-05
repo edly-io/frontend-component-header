@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Responsive from 'react-responsive';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -17,7 +18,6 @@ const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   const headerLogo = (
     <LogoSlot
@@ -31,10 +31,12 @@ const LearningHeader = ({
     <header className="learning-header customise indigo-header-version">
       <a className="sr-only sr-only-focusable" href="#main-content">{intl.formatMessage(messages.skipNavLink)}</a>
       <div className="container-xl py-2 d-flex align-items-center">
-        {showUserDropdown && authenticatedUser && isMobile && (
-          <AuthenticatedUserDropdown
-            username={authenticatedUser.username}
-          />
+        {showUserDropdown && authenticatedUser && (
+          <Responsive maxWidth={991}>
+            <AuthenticatedUserDropdown
+              username={authenticatedUser.username}
+            />
+          </Responsive>
         )}
         {headerLogo}
         <div className="flex-grow-1 course-title-lockup d-flex" style={{ lineHeight: 1 }}>
@@ -52,16 +54,14 @@ const LearningHeader = ({
         </div>
         <ThemeToggleButton />
         {showUserDropdown && authenticatedUser && (
-        <>
-          <LearningHelpSlot />
-          {
-            !isMobile && (
+          <>
+            <LearningHelpSlot />
+            <Responsive minWidth={992}>
               <AuthenticatedUserDropdown
                 username={authenticatedUser.username}
               />
-            )
-          }
-        </>
+            </Responsive>
+          </>
         )}
         {showUserDropdown && !authenticatedUser && (
         <AnonymousUserMenu />
