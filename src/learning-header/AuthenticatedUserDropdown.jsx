@@ -35,7 +35,7 @@ const AuthenticatedUserDropdown = ({ intl, username }) => {
       href: getConfig().ORDER_HISTORY_URL,
     }] : []),
     {
-      message: intl.formatMessage(messages.signOut),
+      message: intl.formatMessage(messages.logout),
       href: getConfig().LOGOUT_URL,
     },
   ];
