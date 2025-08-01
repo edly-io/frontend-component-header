@@ -8,6 +8,10 @@ $rounded-pill: 50rem  !default;
 @import './Menu/menu.scss';
 @import './studio-header/StudioHeader.scss';
 
+@import "~@edx/brand/paragon/variables";
+@import "~@openedx/paragon/scss/core/core";
+@import "~@edx/brand/paragon/overrides";
+
 .dropdown-item a {
   text-decoration: none;
 }

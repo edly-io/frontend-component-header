@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/edly-io/frontend-component-header#readme",
   "devDependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
+    "@edx/brand": "npm:@edly-io/indigo-brand-openedx@^2.2.2",
     "@edx/browserslist-config": "^1.1.1",
     "@edx/frontend-platform": "^8.3.1",
     "@edx/reactifex": "^2.1.1",
