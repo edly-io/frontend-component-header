@@ -13,13 +13,14 @@ const ThemeToggleButton = ({ intl }) => {
   const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(false);
   const cookies = new Cookies();
   const isThemeToggleEnabled = getConfig().INDIGO_ENABLE_DARK_TOGGLE;
+  const cookieDomain = getConfig().DARK_THEME_COOKIE_DOMAIN;
 
   const getCookieExpiry = () => {
     const today = new Date();
     return new Date(today.getFullYear(), today.getMonth(), today.getDate() + themeCookieExpiry);
   };
 
-  const getCookieOptions = (serverURL) => ({ domain: serverURL.hostname, path: '/', expires: getCookieExpiry() });
+  const getCookieOptions = (serverURL) => ({ domain: cookieDomain, path: '/', expires: getCookieExpiry() });
 
   const addDarkThemeToIframes = () => {
     const iframes = document.getElementsByTagName('iframe');
