@@ -73,6 +73,11 @@ const ThemeToggleButton = ({ intl }) => {
       theme = 'dark';
     }
     cookies.set(themeCookie, theme, getCookieOptions(serverURL));
+    try {
+      window.localStorage.setItem('selected-paragon-theme-variant', theme);
+    } catch (e) {
+      // ignore if localStorage is not available
+    }
 
     const learningMFEUnitIframe = document.getElementById('unit-iframe');
     if (learningMFEUnitIframe) {
